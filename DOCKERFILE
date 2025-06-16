@@ -1,0 +1,11 @@
+# ----- Build stage (nothing to compile, but keeps options open) -----
+FROM supabase/postgres:15.1.0 as base
+
+# Copy initialization SQL
+COPY init /docker-entrypoint-initdb.d
+
+# You can tweak Postgres configs via ENV or conf.d if desired
+# Example: smaller shared_buffers for lightweight containers
+# RUN echo "shared_buffers = 128MB" > /etc/postgresql/postgresql.conf.d/tuning.conf
+
+# The image already exposes 5432

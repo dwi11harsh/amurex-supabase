@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  db:
+    build: .
+    container_name: supabase_amurex_text
+    environment:
+      POSTGRES_PASSWORD: postgres       # change if necessary
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "54322:5432"                    # host:container
+    volumes:
+      - dbdata:/var/lib/postgresql/data # durable data outside the image
+volumes:
+  dbdata:
